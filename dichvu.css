@@ -1,0 +1,250 @@
+/* ==========================================================================
+   1. RESET & VARIABLES (Hệ màu: Trắng, Xanh, Cam)
+   ========================================================================== */
+:root {
+    --color-white: #ffffff;
+    --color-bg-light: #f8fafc;
+    
+    --color-blue-primary: #0284c7;
+    --color-blue-hover: #0369a1;
+    --color-blue-light: #e0f2fe;
+    
+    --color-orange-primary: #ea580c;
+    --color-orange-hover: #c2410c;
+    --color-orange-light: #ffedd5;
+    
+    --color-text-dark: #1e293b;
+    --color-text-main: #334155;
+    --color-text-muted: #64748b;
+    
+    --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 10px 25px rgba(2, 132, 199, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==========================================================================
+   2. BODY & LAYOUT CONTAINER
+   ========================================================================== */
+.services-page-body {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-main);
+    line-height: 1.6;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+.services-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   3. NAVIGATION BUTTONS (Cụm nút điều hướng)
+   ========================================================================== */
+.back-navigation {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--color-blue-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: var(--color-blue-hover);
+    transform: translateY(-2px);
+}
+
+.back-btn.btn-secondary {
+    background-color: transparent;
+    color: var(--color-orange-primary);
+    border: 2px solid var(--color-orange-primary);
+}
+
+.back-btn.btn-secondary:hover {
+    background-color: var(--color-orange-primary);
+    color: var(--white);
+    color: var(--color-white);
+}
+
+/* ==========================================================================
+   4. HEADER SECTION (Tiêu đề)
+   ========================================================================== */
+.services-page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 2.3rem;
+    color: var(--color-text-dark);
+    margin-bottom: 12px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--color-blue-primary), var(--color-orange-primary));
+    border-radius: 2px;
+}
+
+.services-page-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   5. SERVICES CARD GRID -> ĐÃ CHUYỂN THÀNH HÀNG DỌC (Flex Column)
+   ========================================================================== */
+.services-card-grid {
+    display: flex;
+    flex-direction: column; /* Xếp dọc các thẻ */
+    gap: 25px;             /* Khoảng cách giữa các thẻ */
+    max-width: 800px;      /* Giới hạn độ rộng hàng dọc để nhìn cân đối, vừa mắt */
+    margin: 0 auto;        /* Căn giữa toàn bộ hàng dọc */
+}
+
+.service-card {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hiệu ứng nhấc nhẹ và đổi màu viền trái khi di chuột vào */
+.service-card:hover {
+    transform: translateX(5px); /* Khẽ nhích sang phải thay vì đẩy lên trên cho hợp kiểu hàng dọc */
+    box-shadow: var(--shadow-hover);
+}
+
+/* Thanh màu cam tinh tế xuất hiện bên trái thẻ khi hover */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--color-orange-primary);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+    transform: scaleY(1);
+}
+
+/* Nội dung bên trong */
+.card-inner-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px; /* Khoảng cách giữa Icon và Phần chữ */
+}
+
+/* Định dạng các Icon */
+.service-card-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0; /* Không cho icon bị bóp méo */
+}
+
+.icon-blue {
+    background-color: var(--color-blue-light);
+    color: var(--color-blue-primary);
+}
+
+.icon-orange {
+    background-color: var(--color-orange-light);
+    color: var(--color-orange-primary);
+}
+
+/* Thay thế màu xanh lá (green) cũ sang tone xanh Cyan sáng cho hợp bộ ba màu */
+.icon-green {
+    background-color: #e0f7fa;
+    color: #00acc1;
+}
+
+/* Phần chữ bên phải Icon */
+.service-card-title {
+    font-size: 1.3rem;
+    color: var(--color-text-dark);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.service-card-desc {
+    color: var(--color-text-main);
+    font-size: 0.95rem;
+}
+
+.service-card-desc strong {
+    color: var(--color-blue-primary);
+}
+
+/* Dòng chú ý (chỉ có ở thẻ 1) */
+.service-card-note {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 12px;
+    margin-top: 15px;
+    font-style: italic;
+    margin-left: 75px; /* Đẩy lùi lề để thẳng hàng với phần chữ phía trên */
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN (Cho điện thoại nhỏ)
+   ========================================================================== */
+@media (max-width: 576px) {
+    .card-inner-content {
+        flex-direction: column; /* Trên màn hình quá nhỏ, icon và chữ lại xếp dọc nội bộ */
+        gap: 15px;
+    }
+    
+    .service-card-note {
+        margin-left: 0; /* Hủy lùi lề trên mobile */
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
