@@ -195,7 +195,7 @@ img {
     border-radius: 50%;
 }
 
-/* --- HERO SECTION --- */
+/* --- HERO SECTION & BUTTONS --- */
 .hero-section {
     background: var(--primary-gradient), url('https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
     color: white;
@@ -208,7 +208,7 @@ img {
 }
 
 .hero-text h1 {
-    font-size: clamp(32px, 5vw, 48px); /* Responsive typography based on screen size */
+    font-size: clamp(32px, 5vw, 48px);
     margin-bottom: 15px;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -224,7 +224,7 @@ img {
 }
 
 .cta-btn {
-    display: inline-block; /* Crucial for transforms and margins to work predictably */
+    display: inline-block;
     background-color: var(--accent-color);
     color: white;
     padding: 12px 30px;
@@ -241,6 +241,34 @@ img {
 
 .cta-btn:active {
     transform: translateY(0);
+}
+
+/* NÚT QUAY LẠI (MỚI THÊM) */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-card);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 10px 24px;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    will-change: transform;
+}
+
+.back-btn:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: translateX(-4px); /* Nhích nhẹ sang bên trái báo hiệu lùi trang */
+    box-shadow: var(--shadow-md);
+}
+
+.back-btn:active {
+    transform: translateX(0);
 }
 
 /* --- ABOUT SECTION --- */
@@ -265,7 +293,7 @@ img {
 /* --- PRODUCTS SECTION --- */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* Fixes potential mobile breaks */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 30px;
 }
 
@@ -305,8 +333,7 @@ img {
 
 .services-grid {
     display: grid;
-    /* CHANGED: minmax(450px, 1fr) was dangerous for mobile. min(100%, 450px) perfectly auto-scales. */
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
     gap: 30px;
 }
 
@@ -357,7 +384,7 @@ img {
 }
 
 .gallery-item:hover img {
-    transform: scale(1.08); /* Slightly dropped from 1.1 to prevent blurriness during scale edge alignment */
+    transform: scale(1.08);
 }
 
 /* --- CONTACT SECTION --- */
@@ -418,7 +445,190 @@ img {
     }
 
     .service-item {
-        flex-direction: column; /* Stacks icons on top of text on small screens */
+        flex-direction: column;
         text-align: center;
+    }
+}
+/* ==========================================================================
+   BỔ SUNG CSS CHO TRANG CHI TIẾT DỊCH VỤ (SERVICES PAGE)
+   ========================================================================== */
+
+.services-page-body {
+    background-color: var(--bg-main);
+    color: var(--text-muted);
+    padding: 40px 20px;
+}
+
+.services-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Khu vực nút điều hướng quay lại */
+.back-navigation {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-card);
+    color: var(--primary-color);
+    border: 1px solid rgba(30, 60, 114, 0.2);
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.back-btn:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.back-btn.btn-secondary {
+    color: var(--text-muted);
+    border-color: #e2e8f0;
+}
+
+.back-btn.btn-secondary:hover {
+    background-color: var(--text-muted);
+    color: #ffffff;
+    border-color: var(--text-muted);
+}
+
+/* Tiêu đề trang dịch vụ */
+.services-page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.services-page-subtitle {
+    font-size: 16px;
+    color: #64748b;
+    max-width: 600px;
+    margin: 15px auto 0 auto;
+}
+
+/* Lưới thẻ dịch vụ cao cấp */
+.services-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.service-card {
+    background-color: var(--bg-card);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: transparent;
+    transition: background-color var(--transition-smooth);
+}
+
+/* Hiệu ứng nổi bật khi rê chuột vào tấm card */
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(30, 60, 114, 0.08);
+    border-color: rgba(30, 60, 114, 0.15);
+}
+
+.service-card:hover::before {
+    background-color: var(--primary-color);
+}
+
+/* Các nhóm icon sinh động */
+.service-card-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 25px;
+    transition: transform var(--transition-smooth);
+}
+
+.service-card:hover .service-card-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Màu sắc nhẹ nhàng hiện đại theo chuẩn UI/UX cho từng loại icon */
+.icon-blue {
+    background-color: #eff6ff;
+    color: #2563eb;
+}
+
+.icon-orange {
+    background-color: #fff7ed;
+    color: #ea580c;
+}
+
+.icon-green {
+    background-color: #f0fdf4;
+    color: #16a34a;
+}
+
+.service-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 15px 0;
+}
+
+.service-card-desc {
+    font-size: 14.5px;
+    color: #29313b;
+    margin: 0;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* Ghi chú chân thẻ */
+.service-card-note {
+    font-size: 12.5px;
+    color: #94a3b8;
+    margin: 25px 0 0 0;
+    padding-top: 15px;
+    border-top: 1px dashed #e2e8f0;
+    font-style: italic;
+}
+
+/* Responsive tối ưu riêng cho điện thoại */
+@media (max-width: 480px) {
+    .back-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .back-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .service-card {
+        padding: 25px;
     }
 }
