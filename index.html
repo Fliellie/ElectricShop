@@ -6,6 +6,8 @@
     <title>OANHDAT - Cửa Hàng Thiết Bị Điện Chính Hãng</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
 </head>
 <body>
 
@@ -17,11 +19,17 @@
 
             <nav class="navbar">
                 <ul class="nav-links">
-                    <li><a href="#trang-chu" class="active">Trang Chủ</a></li>
-                    <li><a href="#san-pham">Sản Phẩm</a></li>
+                    <li><a href="index.html" class="active">Trang Chủ</a></li>
+                    <li><a href="sanpham.html">Sản Phẩm</a></li>
                     <li><a href="dichvu.html">Dịch Vụ</a></li>
-                    <li><a href="#gioi-thieu">Giới Thiệu</a></li>
-                    <li><a href="#lien-he">Liên Hệ</a></li>
+                    <li><a href="gioithieu.html">Giới Thiệu</a></li>
+                    <li><a href="lienhe.html">Liên Hệ</a></li>
+                    <!-- Thẻ trạng thái tự động lấy thời gian (Mới thêm) -->
+                    <li class="nav-status">
+                        <span id="shop-status-badge" class="status-badge">
+                            <i class="fas fa-circle"></i> <span id="status-text">Đang kiểm tra...</span>
+                        </span>
+                    </li>
                 </ul>
             </nav>
 
@@ -40,7 +48,7 @@
         
         <section id="trang-chu" class="hero-section">
             <div class="hero-text">
-                <h1>Cửa Hàng Điện Máy OANH ĐẠT</h1>
+                <h1>CỬA HÀNG ĐIỆN MÁY OANH ĐẠT</h1>
                 <p>Đồng Hành Cùng Mọi Gia Đình Việt – Chất Lượng Tạo Nên Uy Tín</p>
                 <a href="#gioi-thieu" class="cta-btn">Tìm Hiểu Thêm</a>
             </div>
@@ -49,6 +57,23 @@
         <section id="gioi-thieu" class="about-section">
             
         </section>
+        <!-- Container chính chứa toàn bộ phần sản phẩm -->
+<!-- Container chính chứa toàn bộ phần sản phẩm -->
+<div class="products-section">
+    <div class="section-title">
+        <h2>
+            <i class="fas fa-boxes"></i>
+            Sản Phẩm Nổi Bật tại OANH ĐẠT
+        </h2>
+        <p>Chất lượng uy tín - Bảo hành chính hãng</p>
+    </div>
+
+    <div class="products-grid" id="danh-sach-san-pham">
+        <p>Đang tải sản phẩm...</p>
+    </div>
+</div>
+
+
 
         <section id="dich-vu" class="services-section">
             <div class="container">
@@ -104,6 +129,6 @@
     <footer class="main-footer">
         <p>&copy; 2026 Oanh Đạt Electric Shop. Bản quyền thuộc về cửa hàng điện máy Oanh Đạt.</p>
     </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>

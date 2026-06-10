@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu - OANHDAT</title>
+    <!-- Nhúng file CSS gốc để lấy Header + CSS riêng cho trang giới thiệu -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dichvu.css"> <!-- Tận dụng hệ màu từ dichvu.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS viết riêng cho trang giới thiệu để bạn không cần tạo file mới */
+        .about-page-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .about-hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .about-hero h1 {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        .about-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        .about-card h2 {
+            color: #0284c7; /* Màu xanh dương chủ đạo */
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #ffedd5;
+            padding-bottom: 10px;
+        }
+        .about-card h2 i {
+            color: #ea580c; /* Điểm nhấn màu cam */
+        }
+        .about-text p {
+            margin-bottom: 15px;
+            color: #334155;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .info-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ea580c;
+        }
+        .info-item h4 {
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .highlight-box {
+            background: #e0f2fe;
+            border: 1px dashed #0284c7;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 25px;
+            color: #0369a1;
+            font-style: italic;
+        }
+        .footer-intro {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.95rem;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body class="services-page-body">
+
+    <!-- HEADER GIỮ NGUYÊN NĂVIGATE -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">OANH<span>DAT</span></a>
+            </div>
+
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="sanpham.html">Sản Phẩm</a></li>
+                    <li><a href="dichvu.html">Dịch Vụ</a></li> 
+                    <li><a href="gioithieu.html" class="active">Giới Thiệu</a></li>
+                    <li><a href="lienhe.html">Liên Hệ</a></li>
+                    <li class="nav-status">
+                        <span id="shop-status-badge" class="status-badge">
+                            <i class="fas fa-circle"></i> <span id="status-text">Đang kiểm tra...</span>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" class="action-btn" title="Tìm kiếm"><i class="fas fa-search"></i></a>
+                <a href="#" class="action-btn" title="Tài khoản"><i class="fas fa-user"></i></a>
+                <a href="#" class="action-btn cart-btn" title="Giỏ hàng">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- NỘI DUNG TRANG GIỚI THIỆU -->
+    <div class="about-page-container">
+        
+        <div class="about-hero">
+            <h1>VỀ ĐIỆN MÁY CHÚNG TÔI</h1>
+            <p class="services-page-subtitle">Hơn 10 năm tận tâm phục vụ - Mang giải pháp công nghệ đích thực tới mọi nhà tại Thái Nguyên.</p>
+        </div>
+
+        <!-- Thẻ 1: Câu chuyện thương hiệu -->
+        <div class="about-card">
+            <h2><i class="fas fa-history"></i> Hành Trình Phát Triển</h2>
+            <div class="about-text">
+                <p>Khởi đầu từ một cửa hàng sửa chữa điện tử nhỏ tại địa bàn tỉnh Thái Nguyên, <strong>Điện Máy OANH ĐẠT</strong> đã không ngừng nỗ lực, cải tiến dịch vụ để trở thành một trong những địa chỉ cung cấp thiết bị điện, đồ gia dụng và công nghệ chính hãng hàng đầu tại khu vực.</p>
+                <p>Với phương châm <strong>"Chất Lượng Tạo Nên Uy Tín"</strong>, chúng tôi hiểu rằng mỗi sản phẩm bán ra không chỉ đơn thuần là một thiết bị, mà đó là sự tiện nghi, an toàn và niềm vui trong sinh hoạt hàng ngày của gia đình bạn.</p>
+            </div>
+        </div>
+
+        <!-- Thẻ 2: Hệ thống địa chỉ & Kho hàng bốc phét siêu uy tín -->
+        <div class="about-card">
+            <h2><i class="fas fa-warehouse"></i> Hệ Thống Cửa Hàng & Kho Vận</h2>
+            <div class="about-text">
+                <p>Để đảm bảo hàng hóa luôn sẵn sàng và hỗ trợ bà con lắp đặt nhanh chóng nhất trong ngày, OANH ĐẠT đang vận hành hệ thống hạ tầng tại địa phương:</p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4><i class="fas fa-store" style="color: #0284c7;"></i> Cửa Hàng Trưng Bày Chính</h4>
+                        <p>Số 124, Thị trấn Đu, Huyện Phú Lương, Tỉnh Thái Nguyên.</p>
+                        <p style="font-size: 0.9rem; color: #64748b; margin-top: 5px;">(Nơi khách hàng đến trải nghiệm trực tiếp các dòng tivi, tủ lạnh, máy giặt, điều hòa đời mới nhất)</p>
+                    </div>
+                    
+                    <div class="info-item" style="border-left-color: #0284c7;">
+                        <h4><i class="fas fa-boxes" style="color: #ea580c;"></i> Kho Tổng Điện Máy</h4>
+                        <p>Khu công nghiệp nhỏ Động Đạt, Huyện Phú Lương, Tỉnh Thái Nguyên.</p>
+                        <p style="font-size: 0.9rem; color: #64748b; margin-top: 5px;">(Diện tích hơn 500m², luôn sẵn kho số lượng lớn thiết bị điện dân dụng, dây cáp, đèn LED và linh kiện thay thế)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thẻ 3: Tầm nhìn & Giá trị cốt lõi -->
+        <div class="about-card">
+            <h2><i class="fas fa-star"></i> Tại Sao Nên Chọn Chúng Tôi?</h2>
+            <div class="about-text">
+                <p>Không cạnh tranh bằng mọi giá, OANH ĐẠT tập trung mang lại những giá trị thực tế nhất cho khách hàng thông qua 3 cam kết vàng:</p>
+                <p><i class="fas fa-check-circle" style="color: #22c55e;"></i> <strong>100% Hàng Chính Hãng:</strong> Nói không với hàng giả, hàng nhái, hàng kém chất lượng không rõ nguồn gốc.</p>
+                <p><i class="fas fa-check-circle" style="color: #22c55e;"></i> <strong>Giá Cả Minh Bạch & Cạnh Tranh:</strong> Tối ưu hóa chi phí mặt bằng và vận chuyển để mang lại mức giá "mềm" nhất cho bà con trong huyện.</p>
+                <p><i class="fas fa-check-circle" style="color: #22c55e;"></i> <strong>Hậu Mãi Tận Tâm:</strong> Không bao giờ bỏ rơi khách hàng sau khi bán. Đội ngũ kỹ thuật hỗ trợ tận nhà, bảo hành nhanh gọn không rườm rà giấy tờ.</p>
+                
+                <div class="highlight-box">
+                    "Sự hài lòng của quý khách tại Phú Lương, Thái Nguyên chính là nguồn động lực lớn nhất để tập thể cán bộ, nhân viên tại Cửa hàng OANH ĐẠT hoàn thiện mình mỗi ngày."
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER ĐỒNG BỘ -->
+    <footer class="main-footer footer-intro">
+        <p>&copy; 2026 Oanh Đạt Electric Shop. Bản quyền thuộc về cửa hàng điện máy Oanh Đạt.</p>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+</html>

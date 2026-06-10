@@ -4,26 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dịch Vụ Cửa Hàng - OANHDAT</title>
-    <!-- Nhớ kiểm tra lại tên file css của ông ở dòng dưới nhé (dichvu.css hoặc style.css) -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dichvu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="services-page-body">
 
-    <!-- Giữ nguyên phần container nội dung cũ -->
-    <div class="services-page-container">
-        
-        <!-- Cụm nút điều hướng quay lại -->
-        <div class="back-navigation">
-            <a href="javascript:history.back()" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Quay Lại
-            </a>
-            <a href="index.html" class="back-btn btn-secondary">
-                <i class="fas fa-home"></i> Trang Chủ
-            </a>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">OANH<span>DAT</span></a>
+            </div>
+
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="sanpham.html">Sản Phẩm</a></li>
+                    <li><a href="dichvu.html" class="active">Dịch Vụ</a></li>
+                    <li><a href="gioithieu.html">Giới Thiệu</a></li>
+                    <li><a href="lienhe.html">Liên Hệ</a></li>
+                    <li class="nav-status">
+                        <span id="shop-status-badge" class="status-badge">
+                            <i class="fas fa-circle"></i> <span id="status-text">Đang kiểm tra...</span>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" class="action-btn" title="Tìm kiếm"><i class="fas fa-search"></i></a>
+                <a href="#" class="action-btn" title="Tài khoản"><i class="fas fa-user"></i></a>
+                <a href="#" class="action-btn cart-btn" title="Giỏ hàng">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="services-page-container" style="margin-top: 40px;">
+
+        <div id="admin-form-container" class="admin-form" style="display: none;">
+            <h3><i class="fas fa-plus-circle"></i> Thêm Dịch Vụ Mới</h3>
+            <div class="form-grid">
+                <input type="text" id="service-title" placeholder="Tên dịch vụ/sản phẩm">
+                <select id="service-icon">
+                    <option value="fa-tools icon-orange">Icon Sửa Chữa (Màu Cam)</option>
+                    <option value="fa-map-marker-alt icon-blue">Icon Vị Trí (Màu Xanh Dương)</option>
+                    <option value="fa-lightbulb icon-green">Icon Bóng Đèn (Màu Xanh Chanh)</option>
+                    <option value="fa-laptop icon-blue">Icon Máy Tính (Màu Xanh Dương)</option>
+                    <option value="fa-shield-alt icon-orange">Icon Bảo Hành (Màu Cam)</option>
+                </select>
+                <textarea id="service-desc" placeholder="Mô tả chi tiết về dịch vụ..."></textarea>
+                <input type="text" id="service-note" placeholder="Lưu ý/Chú thích nhỏ dưới cùng (Không bắt buộc)">
+            </div>
+            <button class="btn-submit" onclick="addNewService()">Lưu và Thêm Mới</button>
         </div>
 
-        <!-- Tiêu đề trang -->
         <div class="services-page-header">
             <h2 class="section-title">Dịch Vụ Của Chúng Tôi</h2>
             <p class="services-page-subtitle">
@@ -31,64 +68,114 @@
             </p>
         </div>
 
-        <!-- Danh sách các thẻ dịch vụ -->
-        <div class="services-card-grid">
-            
-            <div class="service-card card-blue">
-                <div class="card-inner-content">
-                    <div class="service-card-icon icon-blue">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="service-card-title">Lắp Đặt Thiết Bị</h3>
-                    <p class="service-card-desc">
-                        Hỗ trợ giao hàng và triển khai lắp đặt thiết bị tận nơi nhanh chóng trong khu vực <strong>huyện Phú Lương, tỉnh Thái Nguyên</strong>.
-                    </p>
-                </div>
-                <p class="service-card-note">
-                    * Lưu ý: Đối với các khu vực ngoài phạm vi huyện, chi phí dịch vụ sẽ được tính thêm tùy theo khoảng cách di chuyển.
-                </p>
-            </div>
-
-            <div class="service-card card-orange">
-                <div class="card-inner-content">
-                    <div class="service-card-icon icon-orange">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3 class="service-card-title">Sửa Chữa Giá Rẻ</h3>
-                    <p class="service-card-desc">
-                        Khắc phục triệt độ các lỗi sản phẩm phát sinh trong quá trình sử dụng. Đảm bảo mức giá cạnh tranh, linh kiện chính hãng và tối ưu chi phí nhất cho bà con trong địa bàn huyện.
-                    </p>
-                </div>
-            </div>
-
-            <div class="service-card card-green">
-                <div class="card-inner-content">
-                    <div class="service-card-icon icon-green">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="service-card-title">Tư Vấn Nhu Cầu</h3>
-                    <p class="service-card-desc">
-                        Lắng nghe và phân tích nhu cầu thực tế của từng khách hàng để gợi ý dòng sản phẩm chuẩn xác nhất, tránh lãng phí tính năng và vừa vặn với ngân sách tài chính của bạn.
-                    </p>
-                </div>
-            </div>
-            
-        </div>
+        <div class="services-card-grid" id="services-container"></div>
     </div>
 
-    <!-- ==================== THÊM MỚI FOOTER Ở ĐÂY ==================== -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-info">
-                <h4>Điện Máy OANH ĐẠT</h4>
-                <p><i class="fas fa-phone-alt"></i> Hotline hỗ trợ 24/7: <a href="tel:0968064666">0968 064 666</a></p>
-                <p><i class="fab fa-facebook"></i> Theo dõi hoạt động: <a href="https://www.facebook.com/ienmayoanhat" target="_blank">fb.com/ienmayoanhat</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Oanh Đạt Electric Shop. Bản quyền thuộc về cửa hàng điện máy Oanh Đạt.</p>
-        </div>
-    </footer>
+    <script>
+        const ADMIN_PASSWORD = "oanhdat2026"; 
+        const defaultServices = [
+            {
+                title: "Lắp Đặt Thiết Bị",
+                desc: "Hỗ trợ giao hàng và triển khai lắp đặt thiết bị tận nơi nhanh chóng trong khu vực <strong>huyện Phú Lương, tỉnh Thái Nguyên</strong>.",
+                iconClass: "fa-map-marker-alt icon-blue",
+                note: "* Lưu ý: Đối với các khu vực ngoài phạm vi huyện, chi phí dịch vụ sẽ được tính thêm tùy theo khoảng cách di chuyển."
+            },
+            {
+                title: "Sửa Chữa Giá Rẻ",
+                desc: "Khắc phục triệt để các lỗi sản phẩm phát sinh trong quá trình sử dụng. Đảm bảo mức giá cạnh tranh, linh kiện chính hãng và tối ưu chi phí nhất cho bà con trong địa bàn huyện.",
+                iconClass: "fa-tools icon-orange",
+                note: ""
+            },
+            {
+                title: "Tư Vấn Nhu Cầu",
+                desc: "Lắng nghe và phân tích nhu cầu thực tế của từng khách hàng để gợi ý dòng sản phẩm chuẩn xác nhất, tránh lãng phí tính năng và vừa vặn với ngân sách tài chính của bạn.",
+                iconClass: "fa-lightbulb icon-green",
+                note: ""
+            }
+        ];
 
+        let currentServices = JSON.parse(localStorage.getItem('oanhdat_services')) || defaultServices;
+        let isAdmin = false;
+
+        function renderServices() {
+            const container = document.getElementById('services-container');
+            container.innerHTML = '';
+            currentServices.forEach((service, index) => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                const iconParts = service.iconClass.split(' ');
+                const iconName = iconParts[0];
+                const iconColor = iconParts[1] || 'icon-blue';
+
+                card.innerHTML = `
+                    <div class="card-inner-content">
+                        <div class="service-card-icon ${iconColor}">
+                            <i class="fas ${iconName}"></i>
+                        </div>
+                        <div>
+                            <h3 class="service-card-title">${service.title}</h3>
+                            <p class="service-card-desc">${service.desc}</p>
+                        </div>
+                    </div>
+                    ${service.note ? `<p class="service-card-note">${service.note}</p>` : ''}
+                    ${isAdmin ? `<button class="btn-delete" onclick="deleteService(${index})"><i class="fas fa-trash-alt"></i> Xóa thẻ này</button>` : ''}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleAdminMode() {
+            if (!isAdmin) {
+                let passwordInput = prompt("Vui lòng nhập mật khẩu quản lý để chỉnh sửa:");
+                if (passwordInput === ADMIN_PASSWORD) {
+                    isAdmin = true;
+                    document.getElementById('admin-form-container').style.display = 'block';
+                    document.getElementById('admin-toggle-btn').innerHTML = '<i class="fas fa-unlock"></i> Thoát Quản Lý';
+                    document.getElementById('admin-toggle-btn').style.background = '#e11d48';
+                } else if (passwordInput !== null) {
+                    alert("Sai mật khẩu rồi bạn ơi!");
+                }
+            } else {
+                isAdmin = false;
+                document.getElementById('admin-form-container').style.display = 'none';
+                document.getElementById('admin-toggle-btn').innerHTML = '<i class="fas fa-lock"></i> Chế Độ Quản Lý';
+                document.getElementById('admin-toggle-btn').style.background = '#0284c7';
+            }
+            renderServices();
+        }
+
+        function addNewService() {
+            const title = document.getElementById('service-title').value.trim();
+            const iconClass = document.getElementById('service-icon').value;
+            const desc = document.getElementById('service-desc').value.trim();
+            const note = document.getElementById('service-note').value.trim();
+
+            if (!title || !desc) {
+                alert("Vui lòng điền đầy đủ Tên dịch vụ và Mô tả!");
+                return;
+            }
+
+            currentServices.push({ title, desc, iconClass, note });
+            localStorage.setItem('oanhdat_services', JSON.stringify(currentServices));
+            
+            document.getElementById('service-title').value = '';
+            document.getElementById('service-desc').value = '';
+            document.getElementById('service-note').value = '';
+
+            renderServices();
+            alert("Đã thêm thành công dịch vụ mới!");
+        }
+
+        function deleteService(index) {
+            if (confirm(`Bạn có chắc chắn muốn xóa dịch vụ "${currentServices[index].title}" không?`)) {
+                currentServices.splice(index, 1);
+                localStorage.setItem('oanhdat_services', JSON.stringify(currentServices));
+                renderServices();
+            }
+        }
+
+        renderServices();
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
