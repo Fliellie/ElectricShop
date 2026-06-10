@@ -1,7 +1,8 @@
 /* ==========================================================================
-   1. RESET & VARIABLES (Hệ màu: Trắng, Xanh, Cam)
+   1. RESET & VARIABLES (Thiết lập biến màu sắc và mặc định)
    ========================================================================== */
 :root {
+    /* Bảng màu chủ đạo theo yêu cầu: White, Blue, Orange */
     --color-white: #ffffff;
     --color-bg-light: #f8fafc;
     
@@ -13,12 +14,12 @@
     --color-orange-hover: #c2410c;
     --color-orange-light: #ffedd5;
     
+    /* Màu chữ và bổ trợ */
     --color-text-dark: #1e293b;
     --color-text-main: #334155;
     --color-text-muted: #64748b;
-    
-    --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 10px 25px rgba(2, 132, 199, 0.1);
+    --shadow-subtle: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 20px 25px -5px rgba(2, 132, 199, 0.1), 0 10px 10px -5px rgba(2, 132, 199, 0.04);
 }
 
 * {
@@ -32,20 +33,27 @@
    2. BODY & LAYOUT CONTAINER
    ========================================================================== */
 .services-page-body {
-    background-color: var(--color-bg-light);
-    color: var(--color-text-main);
-    line-height: 1.6;
-    padding: 40px 20px;
-    min-height: 100vh;
+    background-color: var(--bg-main);
+    color: var(--text-muted);
+    padding: 40px 20px 0 20px; /* Bỏ padding bottom để footer khít đáy */
+    
+    /* Mấy dòng thần thánh ép footer xuống đáy ở đây */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
 }
 
 .services-page-container {
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    
+    /* Thêm dòng này để nó tự phình ra chiếm hết khoảng trống */
+    flex: 1; 
 }
 
 /* ==========================================================================
-   3. NAVIGATION BUTTONS (Cụm nút điều hướng)
+   3. NAVIGATION BUTTONS (Cụm nút quay lại)
    ========================================================================== */
 .back-navigation {
     display: flex;
@@ -72,6 +80,7 @@
     transform: translateY(-2px);
 }
 
+/* Biến thể nút Trang Chủ (Màu cam) */
 .back-btn.btn-secondary {
     background-color: transparent;
     color: var(--color-orange-primary);
@@ -80,12 +89,11 @@
 
 .back-btn.btn-secondary:hover {
     background-color: var(--color-orange-primary);
-    color: var(--white);
     color: var(--color-white);
 }
 
 /* ==========================================================================
-   4. HEADER SECTION (Tiêu đề)
+   4. HEADER SECTION (Tiêu đề trang)
    ========================================================================== */
 .services-page-header {
     text-align: center;
@@ -93,7 +101,7 @@
 }
 
 .section-title {
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     color: var(--color-text-dark);
     margin-bottom: 12px;
     position: relative;
@@ -101,6 +109,7 @@
     padding-bottom: 15px;
 }
 
+/* Đường gạch chân trang trí hai màu */
 .section-title::after {
     content: '';
     position: absolute;
@@ -121,70 +130,66 @@
 }
 
 /* ==========================================================================
-   5. SERVICES CARD GRID -> ĐÃ CHUYỂN THÀNH HÀNG DỌC (Flex Column)
+   5. SERVICES CARD GRID (Danh sách thẻ dịch vụ)
    ========================================================================== */
 .services-card-grid {
-    display: flex;
-    flex-direction: column; /* Xếp dọc các thẻ */
-    gap: 25px;             /* Khoảng cách giữa các thẻ */
-    max-width: 800px;      /* Giới hạn độ rộng hàng dọc để nhìn cân đối, vừa mắt */
-    margin: 0 auto;        /* Căn giữa toàn bộ hàng dọc */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
 .service-card {
     background-color: var(--color-white);
-    border-radius: 12px;
-    padding: 30px;
+    border-radius: 16px;
+    padding: 35px 30px;
     box-shadow: var(--shadow-subtle);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(0, 0, 0, 0.03);
     position: relative;
     overflow: hidden;
 }
 
-/* Hiệu ứng nhấc nhẹ và đổi màu viền trái khi di chuột vào */
+/* Hiệu ứng đổ bóng và đẩy nhẹ thẻ lên khi hover */
 .service-card:hover {
-    transform: translateX(5px); /* Khẽ nhích sang phải thay vì đẩy lên trên cho hợp kiểu hàng dọc */
+    transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
 }
 
-/* Thanh màu cam tinh tế xuất hiện bên trái thẻ khi hover */
+/* Thanh màu cam tinh tế chạy trên đỉnh thẻ khi hover */
 .service-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
-    height: 100%;
+    width: 100%;
+    height: 4px;
     background-color: var(--color-orange-primary);
-    transform: scaleY(0);
+    transform: scaleX(0);
     transition: transform 0.3s ease;
 }
 
 .service-card:hover::before {
-    transform: scaleY(1);
+    transform: scaleX(1);
 }
 
-/* Nội dung bên trong */
+/* Inner content */
 .card-inner-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px; /* Khoảng cách giữa Icon và Phần chữ */
+    margin-bottom: 20px;
 }
 
-/* Định dạng các Icon */
+/* Icons styling */
 .service-card-icon {
-    width: 55px;
-    height: 55px;
-    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    flex-shrink: 0; /* Không cho icon bị bóp méo */
+    font-size: 1.6rem;
+    margin-bottom: 25px;
 }
 
 .icon-blue {
@@ -197,54 +202,267 @@
     color: var(--color-orange-primary);
 }
 
-/* Thay thế màu xanh lá (green) cũ sang tone xanh Cyan sáng cho hợp bộ ba màu */
+/* Thẻ số 3 dùng class icon-green, đổi sang biến thể Cyan/Blue sáng để hợp tone */
 .icon-green {
-    background-color: #e0f7fa;
+    background-color: #e0f7fa; 
     color: #00acc1;
 }
 
-/* Phần chữ bên phải Icon */
+/* Typography trong thẻ */
 .service-card-title {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--color-text-dark);
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     font-weight: 700;
 }
 
 .service-card-desc {
     color: var(--color-text-main);
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
 .service-card-desc strong {
     color: var(--color-blue-primary);
 }
 
-/* Dòng chú ý (chỉ có ở thẻ 1) */
+/* Phần chú ý riêng cho thẻ số 1 */
 .service-card-note {
     font-size: 0.85rem;
     color: var(--color-text-muted);
     border-top: 1px dashed #e2e8f0;
-    padding-top: 12px;
+    padding-top: 15px;
     margin-top: 15px;
     font-style: italic;
-    margin-left: 75px; /* Đẩy lùi lề để thẳng hàng với phần chữ phía trên */
 }
 
 /* ==========================================================================
-   6. RESPONSIVE DESIGN (Cho điện thoại nhỏ)
+   6. RESPONSIVE DESIGN (Tương thích thiết bị di động)
    ========================================================================== */
-@media (max-width: 576px) {
-    .card-inner-content {
-        flex-direction: column; /* Trên màn hình quá nhỏ, icon và chữ lại xếp dọc nội bộ */
-        gap: 15px;
-    }
-    
-    .service-card-note {
-        margin-left: 0; /* Hủy lùi lề trên mobile */
+@media (max-width: 768px) {
+    .services-page-body {
+        padding: 20px 15px;
     }
     
     .section-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
+    
+    .back-navigation {
+        justify-content: center;
+    }
+    
+    .services-card-grid {
+        grid-template-columns: 1fr; /* Trên màn hình điện thoại sẽ xếp dọc thành 1 cột */
+        gap: 20px;
+    }
+}
+/* --- FOOTER CHO TRANG DỊCH VỤ --- */
+.main-footer {
+    background-color: #111111;
+    color: #888888;
+    margin-top: 60px; /* Tạo khoảng cách với khối nội dung phía trên */
+    font-size: 14px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-info h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-info p {
+    margin: 8px 0;
+    color: #aaaaaa;
+}
+
+.footer-info a {
+    color: #ff6b6b; /* Giữ màu cam đỏ làm điểm nhấn đồng bộ */
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-info a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    background-color: #0a0a0a;
+    padding: 15px 20px;
+    text-align: center;
+    border-top: 1px solid #222222;
+    font-size: 13px;
+}
+
+/* Đảm bảo trang hiển thị tốt khi co giãn (giao diện Responsive) */
+@media (max-width: 768px) {
+    .services-page-body {
+        padding: 20px 10px;
+    }
+    .main-footer {
+        margin-top: 40px;
+    }
+}
+/* --- CẤU HÌNH LẠI BOX DỊCH VỤ VỚI MÀU SẮC MỚI --- */
+.service-card {
+    border-radius: 16px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Viền mảnh tinh tế */
+}
+
+/* Định dạng chữ chung trong card để không bị lẫn vào nền */
+.service-card-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff !important; /* Chữ tiêu đề màu trắng nổi bật */
+    margin: 0 0 15px 0;
+}
+
+.service-card-desc {
+    font-size: 14.5px;
+    color: #cbd5e1; /* Màu chữ mô tả xám sáng dễ đọc */
+    margin: 0;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.service-card-note {
+    font-size: 12.5px;
+    color: #94a3b8;
+    margin: 25px 0 0 0;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    font-style: italic;
+}
+
+/* --- TÔ MÀU CHI TIẾT CHO TỪNG BOX --- */
+
+/* 1. Box Lắp Đặt - Tone Xanh Dương Công Nghệ */
+.service-card.card-blue {
+    background: linear-gradient(145deg, #0f172a, #1e293b);
+    border-left: 5px solid #3b82f6;
+}
+.service-card.card-blue:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(145deg, #1e293b, #1e3a8a); /* Sáng dần lên khi hover */
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25); /* Glow xanh dương */
+    border-color: #60a5fa;
+}
+
+/* 2. Box Sửa Chữa - Tone Cam Năng Lượng / Kỹ Thuật */
+.service-card.card-orange {
+    background: linear-gradient(145deg, #0f172a, #292524);
+    border-left: 5px solid #f97316;
+}
+.service-card.card-orange:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(145deg, #292524, #451a03); /* Sáng dần lên khi hover */
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.25); /* Glow màu cam */
+    border-color: #fb923c;
+}
+
+/* 3. Box Tư Vấn - Tone Xanh Lá Tận Tâm / Giải Pháp */
+.service-card.card-green {
+    background: linear-gradient(145deg, #0f172a, #14532d);
+    border-left: 5px solid #10b981;
+}
+.service-card.card-green:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(145deg, #14532d, #064e3b); /* Sáng dần lên khi hover */
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.25); /* Glow màu xanh lá */
+    border-color: #34d399;
+}
+
+/* Hiệu ứng icon phóng to nhẹ khi hover vào box */
+.service-card:hover .service-card-icon {
+    transform: scale(1.15) rotate(3deg);
+}
+/* --- TÔ MÀU CHO HEADER TIÊU ĐỀ "DỊCH VỤ CỦA CHÚNG TÔI" --- */
+.services-page-header {
+    text-align: center;
+    margin-bottom: 60px;
+    background: rgba(30, 41, 59, 0.5); /* Tạo một lớp nền bo nhẹ phía sau cụm chữ */
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* --- TÔ MÀU HEADER KÉO DÀI FULL CHIỀU NGANG TRANG --- */
+.services-page-header {
+    text-align: center;
+    margin-bottom: 60px;
+    
+    /* Đổ màu nền tối chuyển sắc chạy ngang hết màn hình */
+    background: linear-gradient(to right, #0f172a, #1e293b, #0f172a); 
+    
+    /* Đẩy nội dung rộng ra sát mép */
+    padding: 45px 20px; 
+    
+    /* Phá vỡ giới hạn của container để tràn viền 100% */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    /* Thêm 2 đường viền mảnh trên dưới nhìn cho tinh tế */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Màu chữ Gradient phản quang bên trong */
+.services-page-header .section-title {
+    font-size: 38px; /* Tăng kích thước lên một chút cho hoành tráng */
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    position: relative;
+    
+    /* Giữ hiệu ứng đổ màu chữ Xanh Dương - Cam */
+    background: linear-gradient(to right, #3b82f6, #f97316); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Thanh gạch chân căn giữa */
+.services-page-header .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #3b82f6, #f97316);
+}
+
+/* Chỉnh lại dòng chữ phụ cho mịn và nét hơn trên nền mới */
+.services-page-subtitle {
+    font-size: 16px;
+    color: #94a3b8;
+    max-width: 650px;
+    margin: 20px auto 0 auto;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
 }
