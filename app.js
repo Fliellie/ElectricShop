@@ -29,18 +29,22 @@ async function loadProducts() {
     luoiSanPham.innerHTML = "";
 
     data.forEach(product => {
-        luoiSanPham.innerHTML += `
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="${product.image_url}" alt="${product.name}">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">${product.name}</h3>
-                    <p><strong>Hãng:</strong> ${product.brand}</p>
-                    <p><strong>Nhà sản xuất:</strong> ${product.manufacturer}</p>
-                    <p>${product.description}</p>
+    // Xử lý hiển thị giá nếu bị null hoặc trống
+    const displayPrice = product.price ? product.price : "Liên hệ";
+    
+    luoiSanPham.innerHTML += `
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="${product.image_url}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300'">
+                ${product.status ? `<span class="product-status-badge">${product.status}</span>` : ''}
+            </div>
+            <div class="product-info">
+                <h3 class="product-name" title="${product.name}">${product.name}</h3>
+                
+                <div class="product-meta-bottom">
                     <div class="product-price-box">
-                        <span class="price-current">${product.status}</span>
+                        <span class="price-label">Giá tương đối:</span>
+                        <span class="price-current">${displayPrice}</span>
                     </div>
                     <div class="product-actions">
                         <a href="chitiet-sanpham.html?id=${product.id}" class="btn-view-detail">
@@ -49,8 +53,9 @@ async function loadProducts() {
                     </div>
                 </div>
             </div>
-        `;
-    });
+        </div>
+    `;
+});
 }
 
 // Chạy khi trang web tải xong

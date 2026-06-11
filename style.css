@@ -677,3 +677,158 @@ img {
 .btn-view-detail:hover {
     background: #0369a1;
 }
+/* Khung chứa lưới sản phẩm (Đảm bảo responsive) */
+#danh-sach-san-pham {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Thẻ sản phẩm tổng thể */
+.product-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+
+/* ÉP ẢNH THÀNH HÌNH VUÔNG ĐỀU */
+.product-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Tỷ lệ 1:1 hoàn hảo */
+    position: relative;
+    background-color: #f8fafc;
+    overflow: hidden;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Giúp ảnh phủ đều khung vuông không bị méo hình */
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image-wrapper img {
+    transform: scale(1.05); /* Hiệu ứng zoom nhẹ khi hover */
+}
+
+/* Nhãn trạng thái (Ví dụ: Còn hàng / Hết hàng) nằm góc ảnh */
+.product-status-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.8);
+    color: #ffffff;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+}
+
+/* Phần thông tin bên dưới ảnh */
+.product-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.product-brand {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.product-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    /* Giới hạn tên tối đa 2 dòng, quá dài tự động thêm dấu ... */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 42px;
+}
+
+.product-manufacturer {
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.product-desc {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    /* Giới hạn mô tả tối đa 2 dòng */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 38px;
+}
+
+/* Gom cụm giá và nút xuống đáy thẻ */
+.product-meta-bottom {
+    margin-top: auto; /* Đẩy cụm này xuống sát đáy */
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 12px;
+}
+
+/* LÀM NỔI BẬT KHUNG GIÁ (PRICE) */
+.product-price-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.price-label {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-bottom: 2px;
+}
+
+.price-current {
+    font-size: 20px;
+    font-weight: 700;
+    color: #dc2626; /* Màu đỏ nổi bật hẳn lên, có thể đổi sang màu #2563eb nếu thích xanh công nghệ */
+    letter-spacing: -0.5px;
+}
+
+/* Nút bấm xem chi tiết */
+.btn-view-detail {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f5f9;
+    color: #1e293b;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-view-detail:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
