@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Sản phẩm (Admin)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="add_and_delete_product.js"></script>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html" class="btn-back">Quay về trang chủ</a>
+    </div>
+
+    <div class="main-container">
+
+        <div class="left-panel">
+            <h2>Danh sách sản phẩm hệ thống</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Thời gian khởi tạo</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá tương đối</th>
+                            <th>Mô tả</th>
+                            <th>Hãng</th>
+                            <th>Xuất xứ</th>
+                            <th>Trạng thái</th>
+                            <th>Ảnh</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-table-body">
+                        <tr>
+                            <td colspan="10" style="text-align: center; padding: 20px; color: #64748b;">
+                                Đang tải danh sách sản phẩm...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <h1>Thêm sản phẩm tại đây</h1>
+            
+            <form id="product-form">
+                
+                <div class="form-group">
+    <p>Hình ảnh sản phẩm</p>
+    <div class="image-upload-box" id="upload-box" onclick="triggerImageInput()" onpaste="handleImagePaste(event)">
+        <img id="box-img-preview" class="preview-img-box" src="" alt="Preview">
+        <div class="upload-placeholder" id="upload-text">
+            <strong>Nhấp để chọn file từ máy / Dán link ảnh</strong><br>
+            hoặc bấm vào đây rồi ấn Ctrl + V để dán ảnh đã copy
+        </div>
+    </div>
+    
+    <input type="file" id="product-image-file" accept="image/*" style="display: none;">
+    
+    <textarea id="product-image-url" placeholder="Dán link ảnh từ Internet vào đây... (https://...)"></textarea>
+</div>
+
+                <div class="form-group">
+                    <p>Name</p>
+                    <textarea id="product-name" placeholder="Type your product name" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <p>Price</p>
+                    <textarea id="product-price" placeholder="Type your price, it can be 2x,xxx,xxx"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <p>Description</p>
+                    <textarea id="product-desc" placeholder="Type descriptions..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <p>Brand</p>
+                    <textarea id="product-brand" placeholder="Type brand..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <p>Nhà sản xuất (Xuất xứ)</p>
+                    <textarea id="product-manufacturer" placeholder="Type manufacturer..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <p>Trạng thái tồn kho?</p>
+                    <textarea id="product-status" placeholder="Ví dụ: Còn hàng, Hết hàng..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Lưu sản phẩm</button>
+
+            </form>
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

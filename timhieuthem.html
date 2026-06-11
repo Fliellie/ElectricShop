@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chức năng đang phát triển</title>
+    <style>
+        /* Thiết lập nền tối xanh (Bluedark) cho toàn bộ trang */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0f172a; /* Màu xanh đen sâu (Slate 900) */
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Nút quay lại ở góc trên bên trái (Left Top Corner) */
+        .btn-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: white;
+            background-color: #ea580c; /* Màu cam gốc (Orange) */
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hiệu ứng Hover cho nút bấm */
+        .btn-back:hover {
+            background-color: #c2410c; /* Cam đậm hơn một chút khi hover */
+            transform: translateY(-2px); /* Nhấc nhẹ nút lên */
+            box-shadow: 0 10px 15px -3px rgba(234, 88, 12, 0.3); /* Đổ bóng cam phát sáng nhẹ */
+        }
+
+        .btn-back:active {
+            transform: translateY(0);
+        }
+
+        /* Thẻ p chứa dòng thông báo với màu đỏ dịu (Soft Red) */
+        .message {
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center;
+            color: #f87171; /* Màu đỏ pastel/soft red thời thượng, không bị chói hay giống màu máu */
+            padding: 0 20px;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nút quay lại trang chủ ở góc trên bên trái -->
+    <a href="index.html" class="btn-back">Back</a>
+
+    <!-- Dòng thông báo màu đỏ dịu trên nền xanh tối -->
+    <p class="message">
+        Chức năng đang phát triển, vui lòng quay lại trang chủ nhé!
+    </p>
+
+</body>
+</html>

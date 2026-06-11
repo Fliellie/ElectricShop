@@ -1,0 +1,241 @@
+/* Toàn bộ cấu trúc giao diện */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Thanh điều hướng trên cùng chứa nút Quay về */
+.navbar {
+    height: 60px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.btn-back {
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2563eb;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.btn-back:hover {
+    background-color: #1d4ed8;
+}
+
+/* Chia đôi màn hình (Left and Right half) */
+.main-container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+}
+
+/* === BÊN TRÁI: Bảng danh sách sản phẩm (Có cuộn) === */
+.left-panel {
+    width: 50%;
+    padding: 20px;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.left-panel h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #1e293b;
+}
+
+.table-container {
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+    background-color: #ffffff;
+}
+
+th {
+    background-color: #f8fafc;
+    color: #64748b;
+    padding: 12px 10px;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+tr:hover {
+    background-color: #f8fafc;
+}
+
+.img-preview {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Các nút thao tác trong bảng */
+.actions-cell {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-action {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-edit {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.btn-delete {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* === BÊN PHẢI: Form nhập thông tin sản phẩm === */
+.right-panel {
+    width: 50%;
+    padding: 20px 40px;
+    overflow-y: auto;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.right-panel h1 {
+    font-size: 24px;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 6px;
+    text-transform: capitalize;
+}
+
+textarea {
+    width: 100%;
+    height: 42px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    resize: none;
+    background-color: #ffffff;
+    transition: border-color 0.2s;
+}
+
+textarea:focus {
+    border-color: #2563eb;
+}
+
+textarea#product-desc {
+    height: 80px;
+}
+
+/* Ô vuông lớn chứa hình ảnh */
+.image-upload-box {
+    width: 100%;
+    height: 160px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8fafc;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.image-upload-box:hover {
+    border-color: #2563eb;
+}
+
+.image-upload-box .preview-img-box {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: none;
+}
+
+.image-upload-box .upload-placeholder {
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    padding: 10px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.btn-submit:hover {
+    background-color: #1d4ed8;
+}
